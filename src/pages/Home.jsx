@@ -1,5 +1,69 @@
+import React from 'react';
+
+import { Flex, Typography, Divider, Button } from 'antd';
+import { BookOutlined, PhoneOutlined } from '@ant-design/icons';
+
+import Header from '../components/Header';
+
+const { Text, Title } = Typography;
+
 const Home = () => {
-	return <h1>Home Page</h1>;
+	const header = React.useRef(null);
+	const [headerSize, setHeaderSize] = React.useState(0);
+
+	React.useEffect(() => {
+		if (header.current) {
+			setHeaderSize(header.current.offsetHeight);
+		};
+	}, [header]);
+
+	return (
+		<>
+			<Header ref={header} activeKey='home' />
+
+			<main style={{ position: 'relative', backgroundColor: 'var(--ant-color-primary)', }}>
+				<Flex
+					vertical
+					justify='center'
+					align='center'
+					style={{
+						position: 'relative',
+						minHeight: `calc(100vh - ${headerSize}px)`,
+						color: 'var(--ant-color-white)',
+						textAlign: 'center',
+						padding: '0 16px',
+						zIndex: 1
+					}}
+				>
+					<Title level={4} style={{ color: 'currentColor' }}>Colegio de Montalban</Title>
+					<Title level={1} style={{ color: 'currentColor' }}>Office of Student Affairs and Services</Title>
+					<Text style={{ color: 'currentColor' }}><b>Your campus compass</b>. Guiding student welfare, development, and disciplinary matters.</Text>
+					<Divider />
+					<Flex gap={16} wrap='wrap' justify='center'>
+						<Button type='primary' icon={<BookOutlined />} href='/about'>About Us</Button>
+						<Button type='default' icon={<PhoneOutlined />} href='/contact'>Contact Us</Button>
+					</Flex>
+				</Flex>
+
+				<img
+					src='/Background.jpg'
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100vw',
+						height: '100%',
+
+						filter: 'brightness(0.25) opacity(0.75) saturate(1.5)',
+						objectFit: 'cover',
+						pointerEvents: 'none',
+						userSelect: 'none',
+						zIndex: 0
+					}}
+				/>
+			</main>
+		</>
+	);
 };
 
 export default Home;

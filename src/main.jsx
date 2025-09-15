@@ -23,7 +23,7 @@ createRoot(document.getElementById('root')).render(
 				token: {
 					colorPrimary: PRIMARY_COLOR,
 					colorInfo: PRIMARY_COLOR,
-					fontSize: 12,
+					fontSize: 16,
 					sizeUnit: 2,
 					borderRadius: 4
 				}
