@@ -25,7 +25,7 @@ const Header = (props) => {
 		listener();
 		window.addEventListener('resize', listener);
 		return () => window.removeEventListener('resize', listener);
-	}, [ref]);
+	}, [ref, menuOpen]);
 
 	return (
 		<Flex
@@ -43,13 +43,12 @@ const Header = (props) => {
 				preview={false}
 				alt='Logo'
 				style={{
-					height: 64
+					height: isMobile ? 64 * 0.75 : 64
 				}}
 			/>
 
 			<Button
 				type='primary'
-				size='large'
 				icon={menuOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 				style={{
 					display: isMobile ? 'block' : 'none'
@@ -79,11 +78,11 @@ const Header = (props) => {
 					style={{
 						height: '100%',
 						boxSizing: 'border-box',
-						padding: isMobile ? '16px 0' : 0,
+						padding: isMobile ? '16px' : 0,
 
 						display: 'flex',
 						flexDirection: isMobile ? 'column' : 'row',
-						justifyContent: isMobile ? 'space-between' : 'center',
+						justifyContent: 'flex-start',
 						alignItems: 'center',
 						gap: 32
 					}}
@@ -120,6 +119,7 @@ const Header = (props) => {
 					/>
 					<Button
 						type='primary'
+						size={isMobile ? 'small' : 'large'}
 						icon={<DownloadOutlined />}
 					>
 						Get the App
