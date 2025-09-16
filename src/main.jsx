@@ -17,21 +17,23 @@ const PRIMARY_COLOR = rootToHex('var(--primary)');
 const Main = () => {
 	const isMobile = useMobile();
 
+	const theme = React.useMemo(() => ({
+		algorithm: [
+			DesignTheme.defaultAlgorithm
+		],
+		cssVar: true,
+		token: {
+			colorPrimary: PRIMARY_COLOR,
+			colorInfo: PRIMARY_COLOR,
+			fontSize: isMobile ? 12 : 16,
+			sizeUnit: isMobile ? 1 : 2,
+			borderRadius: 4
+		}
+	}), [isMobile])
+
 	return (
 		<DesignConfig
-			theme={{
-				algorithm: [
-					DesignTheme.defaultAlgorithm
-				],
-				cssVar: true,
-				token: {
-					colorPrimary: PRIMARY_COLOR,
-					colorInfo: PRIMARY_COLOR,
-					fontSize: isMobile ? 12 : 16,
-					sizeUnit: isMobile ? 1 : 2,
-					borderRadius: 4
-				}
-			}}
+			theme={theme}
 		>
 			<App>
 				<BrowserRouter>

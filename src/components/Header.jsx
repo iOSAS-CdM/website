@@ -43,7 +43,8 @@ const Header = (props) => {
 				preview={false}
 				alt='Logo'
 				style={{
-					height: isMobile ? 64 * 0.75 : 64
+					height: isMobile ? 64 * 0.75 : 64,
+					objectFit: 'contain'
 				}}
 			/>
 
