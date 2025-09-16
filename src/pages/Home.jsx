@@ -14,9 +14,15 @@ const Home = () => {
 	const [headerSize, setHeaderSize] = React.useState(0);
 
 	React.useEffect(() => {
-		if (header.current) {
+		if (!header || !header.current) return;
+
+		const listener = () => {
 			setHeaderSize(header.current.offsetHeight);
 		};
+
+		listener();
+		window.addEventListener('resize', listener);
+		return () => window.removeEventListener('resize', listener);
 	}, [header]);
 
 	const isMobile = useMobile();
@@ -35,7 +41,7 @@ const Home = () => {
 						minHeight: `calc(100vh - ${headerSize}px)`,
 						color: 'var(--ant-color-white)',
 						textAlign: 'center',
-						padding: '0 64px',
+						padding: `0 ${isMobile ? 32 : 64}px`,
 						zIndex: 1
 					}}
 				>

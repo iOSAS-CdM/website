@@ -18,7 +18,13 @@ const Header = (props) => {
 	React.useEffect(() => {
 		if (!ref || !ref.current) return;
 
-		setHeaderSize(ref.current.offsetHeight);
+		const listener = () => {
+			setHeaderSize(ref.current.offsetHeight);
+		};
+
+		listener();
+		window.addEventListener('resize', listener);
+		return () => window.removeEventListener('resize', listener);
 	}, [ref]);
 
 	return (
@@ -28,7 +34,7 @@ const Header = (props) => {
 			align='center'
 			gap={32}
 			style={{
-				padding: '16px 32px',
+				padding: isMobile ? '8px 16px' : '16px 32px',
 				borderBottom: '1px solid var(--ant-color-border)'
 			}}
 		>
