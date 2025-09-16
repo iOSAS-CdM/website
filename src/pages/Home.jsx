@@ -58,7 +58,7 @@ const Home = () => {
 						width: '100vw',
 						height: '100%',
 
-						filter: 'brightness(0.25) opacity(0.75) saturate(1.5)',
+						filter: 'brightness(0.5) opacity(0.75) saturate(1.5) contrast(1.125)',
 						objectFit: 'cover',
 						pointerEvents: 'none',
 						userSelect: 'none',
