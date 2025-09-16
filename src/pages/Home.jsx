@@ -5,6 +5,8 @@ import { BookOutlined, PhoneOutlined } from '@ant-design/icons';
 
 import Header from '../components/Header';
 
+import { useMobile } from '../contexts/Mobile';
+
 const { Text, Title } = Typography;
 
 const Home = () => {
@@ -16,6 +18,8 @@ const Home = () => {
 			setHeaderSize(header.current.offsetHeight);
 		};
 	}, [header]);
+
+	const isMobile = useMobile();
 
 	return (
 		<>
@@ -31,7 +35,7 @@ const Home = () => {
 						minHeight: `calc(100vh - ${headerSize}px)`,
 						color: 'var(--ant-color-white)',
 						textAlign: 'center',
-						padding: '0 16px',
+						padding: '0 64px',
 						zIndex: 1
 					}}
 				>
