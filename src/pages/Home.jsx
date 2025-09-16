@@ -39,20 +39,28 @@ const Home = () => {
 					style={{
 						position: 'relative',
 						minHeight: `calc(100vh - ${headerSize}px)`,
-						color: 'var(--ant-color-white)',
 						textAlign: 'center',
+						boxSizing: 'border-box',
 						padding: `0 ${isMobile ? 32 : 64}px`,
 						zIndex: 1
 					}}
 				>
-					<Title level={4} style={{ color: 'currentColor' }}>Colegio de Montalban</Title>
-					<Title level={1} style={{ color: 'currentColor' }}>Office of Student Affairs and Services</Title>
-					<Text style={{ color: 'currentColor' }}><b>Your campus compass</b>. Guiding student welfare, development, and disciplinary matters.</Text>
-					<Divider />
-					<Flex gap={16} wrap='wrap' justify='center'>
-						<Button type='primary' icon={<BookOutlined />} href='/about'>About Us</Button>
-						<Button type='default' icon={<PhoneOutlined />} href='/contact'>Contact Us</Button>
-					</Flex>
+					<div
+						style={{
+							color: 'var(--ant-color-white)'
+						}}
+					>
+						<Title level={4} style={{ color: 'currentColor' }}>Colegio de Montalban</Title>
+						<Title level={1} style={{ color: 'currentColor' }}>Office of Student Affairs and Services</Title>
+						<Text style={{ color: 'currentColor' }}><b>Your campus compass</b>. Guiding student welfare, development, and disciplinary matters.</Text>
+						<Divider
+							style={{ maxWidth: '100%', width: 256, height: 1, backgroundColor: 'var(--ant-color-white)' }}
+						/>
+						<Flex gap={16} wrap='wrap' justify='center'>
+							<Button type='primary' icon={<BookOutlined />} href='/about'>About Us</Button>
+							<Button type='default' icon={<PhoneOutlined />} href='/contact'>Contact Us</Button>
+						</Flex>
+					</div>
 				</Flex>
 
 				<img

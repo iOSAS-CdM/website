@@ -9,42 +9,46 @@ import Home from './pages/Home.jsx';
 
 import { ConfigProvider as DesignConfig, App, theme as DesignTheme } from 'antd';
 
-import { MobileProvider } from './contexts/Mobile.jsx';
+import { MobileProvider, useMobile } from './contexts/Mobile.jsx';
 
 const PRIMARY_COLOR = rootToHex('var(--primary)');
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Main = () => {
+	const isMobile = useMobile();
+
 	return (
-		<React.StrictMode>
-			<MobileProvider>
-				<DesignConfig
-					theme={{
-						algorithm: [
-							DesignTheme.defaultAlgorithm
-						],
-						cssVar: true,
-						token: {
-							colorPrimary: PRIMARY_COLOR,
-							colorInfo: PRIMARY_COLOR,
-							fontSize: 16,
-							sizeUnit: 2,
-							borderRadius: 4
-						}
-					}}
-				>
-					<App>
-						<BrowserRouter>
-							<Routes>
-								<Route path='/' element={<Home />} />
-								<Route path='*' element={<Navigate to='/' replace />} />
-							</Routes>
-						</BrowserRouter>
-					</App>
-				</DesignConfig>
-			</MobileProvider>
-		</React.StrictMode>
+		<DesignConfig
+			theme={{
+				algorithm: [
+					DesignTheme.defaultAlgorithm
+				],
+				cssVar: true,
+				token: {
+					colorPrimary: PRIMARY_COLOR,
+					colorInfo: PRIMARY_COLOR,
+					fontSize: isMobile ? 12 : 16,
+					sizeUnit: isMobile ? 1 : 2,
+					borderRadius: 4
+				}
+			}}
+		>
+			<App>
+				<BrowserRouter>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='*' element={<Navigate to='/' replace />} />
+					</Routes>
+				</BrowserRouter>
+			</App>
+		</DesignConfig>
 	);
 };
 
-createRoot(document.getElementById('root')).render(<Main />);
+createRoot(document.getElementById('root')).render(
+	<React.StrictMode>
+		<MobileProvider>
+			<Main />
+		</MobileProvider>
+	</React.StrictMode>
+);

@@ -61,7 +61,7 @@ const Header = (props) => {
 				style={{
 					position: isMobile ? 'absolute' : 'static',
 					top: headerSize,
-					right: menuOpen ? 0 : '-100%',
+					right: 0,
 					height: isMobile ? `calc(100vh - ${headerSize}px)` : 'auto',
 
 					display: isMobile ? 'flex' : 'block',
@@ -71,7 +71,8 @@ const Header = (props) => {
 					backgroundColor: isMobile ? 'var(--ant-color-white)' : 'transparent',
 
 					zIndex: isMobile ? 1000 : 'auto',
-					transition: 'right 0.3s ease-in-out'
+					transform: isMobile ? (menuOpen ? 'translateX(0)' : 'translateX(100%)') : 'none',
+					transition: 'transform 0.3s ease-in-out'
 				}}
 			>
 				<div
