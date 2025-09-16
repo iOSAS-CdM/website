@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Flex, Tabs, Image, Button } from 'antd';
-import { DownloadOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
 import { useMobile } from '../contexts/Mobile';
 
@@ -71,7 +71,7 @@ const Header = (props) => {
 
 					zIndex: isMobile ? 1000 : 'auto',
 					transform: isMobile ? (menuOpen ? 'translateX(0)' : 'translateX(100%)') : 'none',
-					transition: 'transform 0.3s ease-in-out'
+					transition: 'transform var(--transition)'
 				}}
 			>
 				<div
@@ -117,13 +117,6 @@ const Header = (props) => {
 							}
 						]}
 					/>
-					<Button
-						type='primary'
-						size={isMobile ? 'small' : 'large'}
-						icon={<DownloadOutlined />}
-					>
-						Get the App
-					</Button>
 				</div>
 			</div>
 		</Flex>
