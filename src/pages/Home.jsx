@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Typography, Divider, Button } from 'antd';
+import { Flex, Typography, Divider, Button, Image } from 'antd';
 import { BookOutlined, PhoneOutlined } from '@ant-design/icons';
 
 import Header from '../components/Header';
@@ -33,7 +33,13 @@ const Home = () => {
 	React.useEffect(() => {
 		if (!headerSize) return;
 		setSectionStyle({
-			padding: `${isMobile ? 32 : 64}px`
+			padding: `${isMobile ? 32 : 64}px`,
+			boxSizing: 'border-box',
+
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			textAlign: 'center'
 		});
 	}, [headerSize, isMobile]);
 
@@ -45,12 +51,6 @@ const Home = () => {
 				style={{
 					position: 'relative',
 					minHeight: `calc(100vh - ${headerSize}px)`,
-					boxSizing: 'border-box',
-
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-					textAlign: 'center',
 
 					backgroundColor: 'var(--ant-color-primary)',
 					...sectionStyle
@@ -93,8 +93,21 @@ const Home = () => {
 			</main>
 
 			<section style={{ ...sectionStyle }}>
-				a
-			</section >
+				<Flex vertical justify='center' align='center' gap={32}>
+					<Title level={2}>Fostering Student Welfare & Growth</Title>
+
+					<Flex justify='center' align='center' gap={32}>
+						<Image
+							alt='Students'
+							preview={false}
+							style={{
+								width: 256,
+								height: 512
+							}}
+						/>
+					</Flex>
+				</Flex>
+			</section>
 		</>
 	);
 };

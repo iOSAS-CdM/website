@@ -6,6 +6,7 @@ import './styles/index.css';
 import rootToHex from './utils/rootToHex.js';
 
 import Home from './pages/Home.jsx';
+import Calendar from './pages/Calendar.jsx';
 
 import { ConfigProvider as DesignConfig, App, theme as DesignTheme } from 'antd';
 
@@ -39,6 +40,8 @@ const Main = () => {
 				<BrowserRouter>
 					<Routes>
 						<Route path='/' element={<Home />} />
+						<Route path='/calendar' element={<Calendar />} />
+
 						<Route path='*' element={<Navigate to='/' replace />} />
 					</Routes>
 				</BrowserRouter>

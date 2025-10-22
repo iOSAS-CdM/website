@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 import { Flex, Tabs, Image, Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
@@ -10,6 +11,7 @@ import { useMobile } from '../contexts/Mobile';
  */
 const Header = (props) => {
 	const { activeKey, ref } = props;
+	const navigate = useNavigate();;
 
 	const isMobile = useMobile();
 
@@ -117,6 +119,10 @@ const Header = (props) => {
 								key: 'contact'
 							}
 						]}
+						onChange={(key) => {
+							navigate(key === 'home' ? '/' : `/${key}`);
+							if (isMobile) setMenuOpen(false);
+						}}
 					/>
 				</div>
 			</div>
