@@ -36,8 +36,14 @@ const Header = (props) => {
 			align='center'
 			gap={32}
 			style={{
+				position: 'fixed',
+				top: 0,
 				padding: isMobile ? '8px 16px' : '16px 32px',
-				borderBottom: '1px solid var(--ant-color-border)'
+				borderBottom: '1px solid var(--ant-color-border)',
+				backgroundColor: 'var(--ant-color-white)',
+				zIndex: 10000,
+				width: '100%',
+				boxSizing: 'border-box'
 			}}
 		>
 			<Image
