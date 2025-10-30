@@ -129,18 +129,18 @@ const Home = () => {
 
 					<Row gutter={[32, 32]} align='middle' justify='center' style={{ width: '100%' }}>
 						<Col xs={24} md={8} style={{ display: 'flex', justifyContent: 'center' }}>
-						<Image
-							alt='Students'
-							preview={false}
-								src={''} /* leave blank if image not present in /public */
-							style={{
-								width: 320,
-								height: 220,
-								objectFit: 'cover',
-								borderRadius: 12,
-								backgroundColor: '#f5f5f5'
-							}}
-						/>
+							<Image
+								alt='Students'
+								preview={false}
+									src='/Students.png'
+								style={{
+									width: '100%',
+									height: 512,
+									objectFit: 'cover',
+									borderRadius: 12,
+									backgroundColor: '#f5f5f5'
+								}}
+							/>
 						</Col>
 						<Col xs={24} md={12}>
 							<Paragraph style={{ textAlign: 'left', fontSize: 16, lineHeight: 1.6 }}>
@@ -220,15 +220,15 @@ const Home = () => {
 			{/* Message Us */}
 			<section style={{ ...sectionStyle, paddingTop: 24, paddingBottom: 24, backgroundColor: 'transparent' }}>
 				<Flex vertical justify='center' align='center' gap={24} style={{ width: '100%', maxWidth: 1100 }}>
-					<Row gutter={[24, 24]} style={{ width: '100%' }} align='middle'>
+					<Row gutter={[32, 32]} style={{ width: '100%' }} align='middle'>
 						<Col xs={24} md={12}>
-							<Image src={''} preview={false} alt='office' style={{ width: '100%', height: 320, objectFit: 'cover', borderRadius: 8, backgroundColor: '#eee' }} />
+							<Image src='/Developers.jpg' preview={false} alt='office' style={{ width: '100%', height: 266, objectFit: 'cover' }} />
 						</Col>
 						<Col xs={24} md={12} style={{ textAlign: 'left' }}>
 							<Flex vertical gap={16}>
 								<Title level={3}>Send a Message to the System Developers</Title>
 								<Text type='secondary' style={{ display: 'block', marginBottom: 16 }}>Have a question or suggestion? We'd love to hear from you.</Text>
-								<Button
+								<span><Button
 									type='primary'
 									icon={<MailOutlined />}
 									href='https://mail.google.com/mail/?view=cm&fs=1&to=danieljohnbyns@gmail.com&su=Inquiry&body=Hi%20there%2C'
@@ -236,7 +236,7 @@ const Home = () => {
 									rel='noopener noreferrer'
 								>
 									Send via Gmail
-								</Button>
+								</Button></span>
 							</Flex>
 						</Col>
 					</Row>

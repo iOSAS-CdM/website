@@ -87,7 +87,7 @@ const About = () => {
 					<div style={{ position: 'relative', zIndex: 2 }}>
 						<Text style={{ color: 'white', marginTop: 0 }}>About us</Text>
 						<Title style={{ color: 'white', marginTop: 0 }}>Office of Student Affairs and Services</Title>
-						<Paragraph style={{ color: 'white', marginTop: 0 }}>Our mission, vision, values, and history.</Paragraph>
+						<Paragraph style={{ color: 'white', marginTop: 0 }}>Our mission, vision, and the team dedicated to student success.</Paragraph>
 					</div>
 				</div>
 			</main>
