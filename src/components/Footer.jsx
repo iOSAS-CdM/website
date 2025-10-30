@@ -55,7 +55,7 @@ const Footer = () => {
 							<div>
 								<Button
 									ghost
-									href='https://github.com/iOSAS-CdM/mobile'
+									href='https://github.com/iOSAS-CdM/mobile/releases/latest/download/app-release.apk'
 									target='_blank'
 									rel='noopener noreferrer'
 									icon={<GithubOutlined />}

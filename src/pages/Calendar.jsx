@@ -1,6 +1,7 @@
 import React from 'react';
-import { Flex, Typography, Calendar as AntCalendar, Badge, Row, Col, List } from 'antd';
+import { Flex, Typography, Calendar as AntCalendar, Badge, Row, Col, List, Image } from 'antd';
 import dayjs from 'dayjs';
+import { useNavigate } from 'react-router';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,11 +9,16 @@ import { useMobile } from '../contexts/Mobile';
 
 const { Title, Paragraph, Text } = Typography;
 
+import { API_Route } from '../main';
+
 const Calendar = () => {
+	const navigate = useNavigate();
 	const header = React.useRef(null);
 	const [headerSize, setHeaderSize] = React.useState(0);
 	const isMobile = useMobile();
 	const [selectedValue, setSelectedValue] = React.useState(() => dayjs());
+
+	const [announcements, setAnnouncements] = React.useState([]);
 
 	React.useEffect(() => {
 		if (!header || !header.current) return;
@@ -22,6 +28,23 @@ const Calendar = () => {
 		return () => window.removeEventListener('resize', listener);
 	}, [header]);
 
+	React.useEffect(() => {
+		async function fetchAnnouncements() {
+			try {
+				const response = await fetch(`${API_Route}/announcements`);
+				if (!response.ok) {
+					throw new Error('Failed to fetch announcements');
+				}
+				const data = await response.json();
+				setAnnouncements(data.announcements);
+			} catch (err) {
+				console.error(err);
+			};
+		};
+
+		fetchAnnouncements();
+	}, []);
+
 	const sectionStyle = {
 		padding: isMobile ? '32px' : '64px',
 		boxSizing: 'border-box',
@@ -30,25 +53,21 @@ const Calendar = () => {
 		margin: '0 auto',
 	};
 
-	const events = {
-		'2025-11-05': [{ type: 'success', content: 'Midterm Examinations' }],
-		'2025-11-15': [{ type: 'warning', content: 'University-wide Sports Fest' }],
-		'2025-11-20': [{ type: 'error', content: 'Deadline for Project Submissions' }],
-		'2025-12-01': [{ type: 'success', content: 'Start of Christmas Break' }],
-		'2025-12-25': [{ type: 'default', content: 'Christmas Day' }],
-	};
-
 	const getListData = (value) => {
-		return events[value.format('YYYY-MM-DD')] || [];
+		return announcements
+			.filter(announcement => {
+				const dateToCompare = announcement.type === 'event' ? announcement.event_date : announcement.created_at;
+				return dayjs(dateToCompare).isSame(value, 'day');
+			});
 	};
 
 	const dateCellRender = (value) => {
 		const listData = getListData(value);
 		return (
-			<ul className="events" style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-				{listData.map((item, index) => (
+			<ul className='events' style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+				{listData.map((announcement, index) => (
 					<li key={index}>
-						<Badge status={item.type} text={item.content} />
+						{announcement.title}
 					</li>
 				))}
 			</ul>
@@ -101,7 +120,7 @@ const Calendar = () => {
 					<Row gutter={[32, 32]}>
 						<Col xs={24} lg={16}>
 							<AntCalendar
-								dateCellRender={dateCellRender}
+								cellRender={dateCellRender}
 								onSelect={onSelect}
 								onPanelChange={onPanelChange}
 								value={selectedValue}
@@ -112,9 +131,22 @@ const Calendar = () => {
 							<List
 								bordered
 								dataSource={selectedDateEvents}
-								renderItem={(item) => (
-									<List.Item>
-										<Badge status={item.type} text={item.content} />
+								renderItem={(announcement) => (
+									<List.Item onClick={() => navigate(`/announcements/${announcement.id}`)} style={{ cursor: 'pointer' }}>
+										<Flex vertical align='stretch' gap={8}>
+											<Image
+												src={announcement.cover}
+												width='100%'
+												height={128}
+												preview={false}
+												style={{ objectFit: 'cover', borderRadius: 4 }}
+												alt={announcement.title}
+											/>
+											<div>
+												<Title level={5}>{announcement.title}</Title>
+												<Text type='secondary'>{announcement.description}</Text>
+											</div>
+										</Flex>
 									</List.Item>
 								)}
 								locale={{ emptyText: 'No events for this day.' }}

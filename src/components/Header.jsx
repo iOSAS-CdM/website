@@ -11,7 +11,7 @@ import { useMobile } from '../contexts/Mobile';
  */
 const Header = (props) => {
 	const { activeKey, ref } = props;
-	const navigate = useNavigate();;
+	const navigate = useNavigate();
 
 	const isMobile = useMobile();
 
