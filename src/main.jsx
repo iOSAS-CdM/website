@@ -10,6 +10,7 @@ import About from './pages/About.jsx';
 import Forms from './pages/Forms.jsx';
 import Calendar from './pages/Calendar.jsx';
 import Announcement from './pages/Announcement.jsx';
+import Contact from './pages/Contact.jsx';
 
 import { ConfigProvider as DesignConfig, App, theme as DesignTheme } from 'antd';
 
@@ -47,6 +48,7 @@ const Main = () => {
 						<Route path='/forms' element={<Forms />} />
 						<Route path='/calendar' element={<Calendar />} />
 						<Route path='/announcements/:id' element={<Announcement />} />
+						<Route path='/contact' element={<Contact />} />
 
 						<Route path='*' element={<Navigate to='/' replace />} />
 					</Routes>
@@ -58,7 +60,8 @@ const Main = () => {
 
 export const API_Route = import.meta.env.DEV ? 'http://localhost:3001' : 'https://iosas.online/api';
 
-createRoot(document.getElementById('root')).render(
+const root = createRoot(document.getElementById('root'));
+root.render(
 	<React.StrictMode>
 		<MobileProvider>
 			<Main />

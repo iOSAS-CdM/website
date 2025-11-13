@@ -22,8 +22,10 @@ import {
 	MailOutlined,
 	GithubOutlined
 } from '@ant-design/icons';
+import dayjs from 'dayjs';
 
 import Header from '../components/Header';
+import { API_Route } from '../main';
 
 import Footer from '../components/Footer';
 import { useMobile } from '../contexts/Mobile';
@@ -34,6 +36,24 @@ const { TextArea } = Input;
 const Home = () => {
 	const header = React.useRef(null);
 	const [headerSize, setHeaderSize] = React.useState(0);
+	const [announcements, setAnnouncements] = React.useState([]);
+
+	React.useEffect(() => {
+		const fetchAnnouncements = async () => {
+			try {
+				const response = await fetch(`${API_Route}/announcements/latest`);
+				if (!response.ok) {
+					throw new Error('Failed to fetch announcements');
+				}
+				const data = await response.json();
+				setAnnouncements(data);
+			} catch (error) {
+				console.error(error);
+			};
+		};
+
+		fetchAnnouncements();
+	}, []);
 
 	React.useEffect(() => {
 		if (!header || !header.current) return;
@@ -165,64 +185,50 @@ const Home = () => {
 			</section>
 
 			{/* Latest News */}
-			<section style={{ ...sectionStyle, paddingTop: 24, paddingBottom: 24 }}>
-				<Flex vertical justify='center' align='center' gap={24} style={{ width: '100%', maxWidth: 1100 }}>
-					<Title level={2}>Latest News & Announcements</Title>
+			{announcements.length > 0 && (
+				<section style={{ ...sectionStyle, paddingTop: 24, paddingBottom: 24 }}>
+					<Flex vertical justify='center' align='center' gap={24} style={{ width: '100%', maxWidth: 1100 }}>
+						<Title level={2}>Latest News & Announcements</Title>
 
-					<Row gutter={[24, 24]} style={{ width: '100%' }}>
-						<Col xs={24} md={12}>
-							<Card hoverable bodyStyle={{ padding: 16 }}>
-								<Row gutter={16}>
-									<Col span={10}>
-										<Image src={''} preview={false} alt='news' style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 8, backgroundColor: '#eee' }} />
-									</Col>
-									<Col span={14}>
-										<Title level={4}>Title Defense</Title>
-										<Text type='secondary' style={{ display: 'block', marginBottom: 12 }}>
-											The esteemed Faculty of Colegio de Montalban, nestled within the vibrant academic
-											community of computing studies, proudly announces a si...
+							<Row gutter={[24, 24]} style={{ width: '100%', textAlign: 'left' }}>
+								{announcements.map((announcement) => (
+									<Col xs={24} md={12} key={announcement.id}>
+										<Card
+											hoverable
+											style={{ height: '100%' }}
+											cover={
+												<Image
+													alt={announcement.title}
+													src={announcement.cover || '/AnnouncementPlaceholder.png'}
+													preview={false}
+													style={{ width: '100%', height: 200, objectFit: 'cover' }}
+												/>
+											}
+										>
+											<Title level={4}>{announcement.title}</Title>
+											<Text type='secondary' style={{ display: 'block', marginBottom: 12 }}>
+											{announcement.content.substring(0, 100)}...
 										</Text>
 										<Space>
-											<Button size='small' type='text'>May 23, 2025</Button>
-											<Button size='small' type='link' href='/news/title-defense'>Read More</Button>
+											{dayjs(announcement.created_at).format('MMM D, YYYY')}
+											<Button size='small' type='link' href={`/announcements/${announcement.id}`}>Read More</Button>
 										</Space>
-									</Col>
-								</Row>
-							</Card>
-						</Col>
+									</Card>
+								</Col>
+							))}
+						</Row>
 
-						<Col xs={24} md={12}>
-							<Card hoverable bodyStyle={{ padding: 16 }}>
-								<Row gutter={16}>
-									<Col span={10}>
-										<Image src={''} preview={false} alt='news' style={{ width: '100%', height: 120, objectFit: 'cover', borderRadius: 8, backgroundColor: '#eee' }} />
-									</Col>
-									<Col span={14}>
-										<Title level={4}>Student Congress 2025</Title>
-										<Text type='secondary' style={{ display: 'block', marginBottom: 12 }}>
-											The vibrant student body of Colegio de Montalban, nestled in the heart of Rodriguez,
-											Calabarzon, is thrilled to announce the highly anticipated Student Congress 2025! This premi...
-										</Text>
-										<Space>
-											<Button size='small' type='text'>May 20, 2025</Button>
-											<Button size='small' type='link' href='/news/student-congress-2025'>Read More</Button>
-										</Space>
-									</Col>
-								</Row>
-							</Card>
-						</Col>
-					</Row>
-
-					<Button type='default' href='/calendar' icon={<CalendarOutlined />}>Open Calendar</Button>
-				</Flex>
-			</section>
+						<Button type='default' href='/calendar' icon={<CalendarOutlined />}>Open Calendar</Button>
+					</Flex>
+				</section>
+			)}
 
 			{/* Message Us */}
 			<section style={{ ...sectionStyle, paddingTop: 24, paddingBottom: 24, backgroundColor: 'transparent' }}>
 				<Flex vertical justify='center' align='center' gap={24} style={{ width: '100%', maxWidth: 1100 }}>
 					<Row gutter={[32, 32]} style={{ width: '100%' }} align='middle'>
 						<Col xs={24} md={12}>
-							<Image src='/Developers.jpg' preview={false} alt='office' style={{ width: '100%', height: 266, objectFit: 'cover' }} />
+							<Image src='/Developers.jpg' preview={false} alt='office' style={{ width: '100%', height: 266, borderRadius: 12, objectFit: 'cover' }} />
 						</Col>
 						<Col xs={24} md={12} style={{ textAlign: 'left' }}>
 							<Flex vertical gap={16}>
