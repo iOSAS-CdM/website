@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Typography, Card, Row, Col, Button, Spin, Alert, Empty } from 'antd';
+import { Flex, Typography, Card, Row, Col, Button, Spin, Alert, Empty, Image } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
 import Header from '../components/Header';
@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import { useMobile } from '../contexts/Mobile';
 import { API_Route } from '../main';
 
-const { Title, Paragraph } = Typography;
+const { Text, Title, Paragraph } = Typography;
 
 const Forms = () => {
 	const header = React.useRef(null);
@@ -58,30 +58,6 @@ const Forms = () => {
 		textAlign: 'center'
 	};
 
-	// if (loading) {
-	// 	return (
-	// 		<>
-	// 			<Header ref={header} activeKey='forms' />
-	// 			<main style={{ paddingTop: headerSize, textAlign: 'center', padding: '64px' }}>
-	// 				<Spin size='large' />
-	// 			</main>
-	// 			<Footer />
-	// 		</>
-	// 	);
-	// }
-
-	// if (error) {
-	// 	return (
-	// 		<>
-	// 			<Header ref={header} activeKey='forms' />
-	// 			<main style={{ paddingTop: headerSize, padding: '64px' }}>
-	// 				<Alert message='Error' description={error} type='error' showIcon />
-	// 			</main>
-	// 			<Footer />
-	// 		</>
-	// 	);
-	// }
-
 	return (
 		<>
 			<Header ref={header} activeKey='forms' />
@@ -127,15 +103,30 @@ const Forms = () => {
 								<Col xs={24} sm={12} md={8} lg={6} key={form.id}>
 									<Card>
 										<Flex vertical align='stretch' gap={16}>
-											<Title level={4}>{form.name}</Title>
-											<a href={form.publicUrl} target='_blank' rel='noopener noreferrer' download>
-												<Button type='primary' size='small' icon={<DownloadOutlined />} >Download</Button>
-											</a>
+											{(form.thumbnailUrl || (form.metadata?.mimetype?.includes && form.metadata?.mimetype.includes('image/'))) ? (
+												<Image src={form.thumbnailUrl || form.publicUrl} alt={form.name} width={'100%'} style={{ objectFit: 'cover', height: 160 }} preview={false} />
+											) : null}
+											<Text>{form.name}</Text>
+											<Button type='primary' size='small' icon={<DownloadOutlined />} onClick={() => {
+												const a = document.createElement('a');
+												a.href = form.publicUrl;
+												a.target = '_blank';
+												a.download = form.name;
+												document.body.appendChild(a);
+												a.click();
+												document.body.removeChild(a);
+											}}>Download</Button>
 										</Flex>
 									</Card>
 								</Col>
 							))}
 						</Row>
+					</section>
+				)}
+				
+				{loading && (
+					<section style={sectionStyle}>
+						<Spin size='large' />
 					</section>
 				)}
 			</main>
