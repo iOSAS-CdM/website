@@ -17,6 +17,7 @@ const Header = (props) => {
 
 	const [menuOpen, setMenuOpen] = React.useState(false);
 	const [headerSize, setHeaderSize] = React.useState(0);
+	const [onTop, setOnTop] = React.useState(true);
 	React.useEffect(() => {
 		if (!ref || !ref.current) return;
 
@@ -26,7 +27,19 @@ const Header = (props) => {
 
 		listener();
 		window.addEventListener('resize', listener);
-		return () => window.removeEventListener('resize', listener);
+		window.addEventListener('scroll', listener);
+
+		const topListener = () => {
+			setOnTop(window.scrollY === 0);
+		};
+
+		topListener();
+		window.addEventListener('scroll', topListener);
+		return () => {
+			window.removeEventListener('resize', listener);
+			window.removeEventListener('scroll', listener);
+			window.removeEventListener('scroll', topListener);
+		};
 	}, [ref, menuOpen]);
 
 	return (
@@ -38,7 +51,7 @@ const Header = (props) => {
 			style={{
 				position: 'fixed',
 				top: 0,
-				padding: isMobile ? '8px 16px' : '16px 32px',
+				padding: isMobile ? '8px 16px' : `${onTop ? '16px' : '8px'} 32px`,
 				borderBottom: '1px solid var(--ant-color-border)',
 				backgroundColor: 'var(--ant-color-white)',
 				zIndex: 10000,

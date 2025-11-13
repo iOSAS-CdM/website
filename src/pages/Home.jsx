@@ -12,7 +12,8 @@ import {
 	Form,
 	Input,
 	Checkbox,
-	Space
+	Space,
+	Skeleton
 } from 'antd';
 import {
 	BookOutlined,
@@ -37,6 +38,7 @@ const Home = () => {
 	const header = React.useRef(null);
 	const [headerSize, setHeaderSize] = React.useState(0);
 	const [announcements, setAnnouncements] = React.useState([]);
+	const [loading, setLoading] = React.useState(true);
 
 	React.useEffect(() => {
 		const fetchAnnouncements = async () => {
@@ -49,7 +51,9 @@ const Home = () => {
 				setAnnouncements(data);
 			} catch (error) {
 				console.error(error);
-			};
+			} finally {
+				setLoading(false);
+			}
 		};
 
 		fetchAnnouncements();
@@ -185,28 +189,36 @@ const Home = () => {
 			</section>
 
 			{/* Latest News */}
-			{announcements.length > 0 && (
-				<section style={{ ...sectionStyle, paddingTop: 24, paddingBottom: 24 }}>
-					<Flex vertical justify='center' align='center' gap={24} style={{ width: '100%', maxWidth: 1100 }}>
-						<Title level={2}>Latest News & Announcements</Title>
+			<section style={{ ...sectionStyle, paddingTop: 24, paddingBottom: 24 }}>
+				<Flex vertical justify='center' align='center' gap={24} style={{ width: '100%', maxWidth: 1100 }}>
+					<Title level={2}>Latest News & Announcements</Title>
 
-							<Row gutter={[24, 24]} style={{ width: '100%', textAlign: 'left' }}>
-								{announcements.map((announcement) => (
-									<Col xs={24} md={12} key={announcement.id}>
-										<Card
-											hoverable
-											style={{ height: '100%' }}
-											cover={
-												<Image
-													alt={announcement.title}
-													src={announcement.cover || '/AnnouncementPlaceholder.png'}
-													preview={false}
-													style={{ width: '100%', height: 200, objectFit: 'cover' }}
-												/>
-											}
-										>
-											<Title level={4}>{announcement.title}</Title>
-											<Text type='secondary' style={{ display: 'block', marginBottom: 12 }}>
+					<Row gutter={[24, 24]} style={{ width: '100%', textAlign: 'left' }}>
+						{loading ? (
+							Array.from({ length: 2 }).map((_, index) => (
+								<Col xs={24} md={12} key={index}>
+									<Card>
+										<Skeleton active />
+									</Card>
+								</Col>
+							))
+						) : (
+							announcements.map((announcement) => (
+								<Col xs={24} md={12} key={announcement.id}>
+									<Card
+										hoverable
+										style={{ height: '100%' }}
+										cover={
+											<Image
+												alt={announcement.title}
+												src={announcement.cover || '/AnnouncementPlaceholder.png'}
+												preview={false}
+												style={{ width: '100%', height: 200, objectFit: 'cover' }}
+											/>
+										}
+									>
+										<Title level={4}>{announcement.title}</Title>
+										<Text type='secondary' style={{ display: 'block', marginBottom: 12 }}>
 											{announcement.content.substring(0, 100)}...
 										</Text>
 										<Space>
@@ -215,13 +227,13 @@ const Home = () => {
 										</Space>
 									</Card>
 								</Col>
-							))}
-						</Row>
+							))
+						)}
+					</Row>
 
-						<Button type='default' href='/calendar' icon={<CalendarOutlined />}>Open Calendar</Button>
-					</Flex>
-				</section>
-			)}
+					<Button type='default' href='/calendar' icon={<CalendarOutlined />}>Open Calendar</Button>
+				</Flex>
+			</section>
 
 			{/* Message Us */}
 			<section style={{ ...sectionStyle, paddingTop: 24, paddingBottom: 24, backgroundColor: 'transparent' }}>

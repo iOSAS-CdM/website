@@ -31,7 +31,11 @@ const Announcement = () => {
 		const listener = () => setHeaderSize(header.current.offsetHeight);
 		listener();
 		window.addEventListener('resize', listener);
-		return () => window.removeEventListener('resize', listener);
+		window.addEventListener('scroll', listener);
+		return () => {
+			window.removeEventListener('resize', listener);
+			window.removeEventListener('scroll', listener);
+		};
 	}, [header]);
 
 	useEffect(() => {
