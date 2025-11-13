@@ -12,7 +12,7 @@ import Calendar from './pages/Calendar.jsx';
 import Announcement from './pages/Announcement.jsx';
 import Contact from './pages/Contact.jsx';
 import Organizations from './pages/Organizations.jsx';
-import OrganizationDetails from './pages/OrganizationDetails.jsx';
+import Organization from './pages/Organization.jsx';
 
 import { ConfigProvider as DesignConfig, App, theme as DesignTheme } from 'antd';
 
@@ -52,7 +52,7 @@ const Main = () => {
 						<Route path='/announcements/:id' element={<Announcement />} />
 						<Route path='/contact' element={<Contact />} />
 						<Route path='/organizations' element={<Organizations />} />
-						<Route path='/organizations/:id' element={<OrganizationDetails />} />
+						<Route path='/organizations/:id' element={<Organization />} />
 
 						<Route path='*' element={<Navigate to='/' replace />} />
 					</Routes>

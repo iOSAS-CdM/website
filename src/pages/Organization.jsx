@@ -8,7 +8,7 @@ import { API_Route } from '../main';
 
 const { Title, Text, Paragraph } = Typography;
 
-const OrganizationDetails = () => {
+const Organization = () => {
 	const { id } = useParams();
 	const header = useRef(null);
 	const [headerSize, setHeaderSize] = useState(0);
@@ -88,40 +88,42 @@ const OrganizationDetails = () => {
 			{organization && (
 				<>
 					<main style={{ paddingTop: headerSize }}>
-						<Image
-							preview={false}
-							src={organization.cover}
-							width={'100%'}
-							alt={organization.shortName}
-							style={{ width: '100%', height: isMobile ? 200 : 400, objectFit: 'cover' }}
-						/>
-					</main>
-					<section style={sectionStyle}>
-						<Flex vertical align='center' gap={32}>
-							<Flex align='center' gap={16}>
-								<Avatar src={organization.logo} size={isMobile ? 64 : 96} />
-								<Flex vertical justify='center'>
-									<Title level={isMobile ? 4 : 2} style={{ margin: 0 }}>{organization.fullName}</Title>
-									<Title level={isMobile ? 5 : 4} type='secondary' style={{ margin: 0 }}>{organization.shortName}</Title>
+						<section style={sectionStyle}>
+							<Flex vertical gap={32} align='center'>
+								<Image
+									preview={false}
+									src={organization.cover}
+									width={'100%'}
+									alt={organization.shortName}
+									style={{ width: '100%', height: isMobile ? 200 : 400, objectFit: 'cover' }}
+								/>
+								<Flex vertical align='stretch' gap={32} style={{ width: '100%' }}>
+									<Flex justify='start' align='center' gap={16}>
+										<Avatar src={organization.logo} size={isMobile ? 64 : 96} />
+										<Flex vertical justify='center'>
+											<Title level={isMobile ? 4 : 2} style={{ margin: 0 }}>{organization.fullName}</Title>
+											<Title level={isMobile ? 5 : 4} type='secondary' style={{ margin: 0 }}>{organization.shortName}</Title>
+										</Flex>
+									</Flex>
+									<Divider />
+									<Title level={3}>Officers</Title>
+									<Row gutter={[32, 32]} style={{ width: '100%' }}>
+										{organization.members && organization.members.length > 0 ? organization.members.map((member) => (
+											<Col key={member.student.id} xs={24} sm={16} md={12} lg={8}>
+												<Card>
+													<Card.Meta
+														avatar={<Avatar src={member.student.profilePicture} size={64} />}
+														title={`${member.student.name.first} ${member.student.name.last}`}
+														description={member.role}
+													/>
+												</Card>
+											</Col>
+										)) : <Empty description='No officers found' style={{ width: '100%' }} />}
+									</Row>
 								</Flex>
 							</Flex>
-							<Divider />
-							<Title level={3}>Officers</Title>
-							<Row gutter={[32, 32]} style={{ width: '100%' }}>
-								{organization.members && organization.members.length > 0 ? organization.members.map((member) => (
-									<Col key={member.student.id} xs={24} sm={16} md={12} lg={8}>
-										<Card>
-											<Card.Meta
-												avatar={<Avatar src={member.student.profilePicture} size={64} />}
-												title={`${member.student.name.first} ${member.student.name.last}`}
-												description={member.role}
-											/>
-										</Card>
-									</Col>
-								)) : <Empty description='No officers found' style={{ width: '100%' }} />}
-							</Row>
-						</Flex>
-					</section>
+						</section>
+					</main>
 				</>
 			)}
 			<Footer />
@@ -129,4 +131,4 @@ const OrganizationDetails = () => {
 	);
 };
 
-export default OrganizationDetails;
+export default Organization;
