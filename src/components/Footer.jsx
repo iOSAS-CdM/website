@@ -73,28 +73,6 @@ const Footer = () => {
 					<Col xs={24} sm={12} md={6}>
 						<Flex vertical align='flex-start' gap={16}>
 							<Title level={5} style={{ color: 'var(--ant-color-white)' }}>Get the App</Title>
-							{/* <div>
-								<Button
-									ghost
-									href='https://github.com/iOSAS-CdM/mobile/releases/latest/download/app-release.apk'
-									target='_blank'
-									rel='noopener noreferrer'
-									icon={<GithubOutlined />}
-								>
-									Students
-								</Button>
-							</div>
-							<div>
-								<Button
-									ghost
-									href='https://github.com/iOSAS-CdM/administrative-staff'
-									target='_blank'
-									rel='noopener noreferrer'
-									icon={<GithubOutlined />}
-								>
-									For Administrative Staff
-								</Button>
-							</div> */}
 							{loading ? (
 								<Skeleton.Input style={{ width: 200, height: 32 }} active />
 							) : (
