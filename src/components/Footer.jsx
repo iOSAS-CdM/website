@@ -1,12 +1,33 @@
 import React from 'react';
-import { Flex, Typography, Divider, Button, Image, Row, Col } from 'antd';
+import { Flex, Typography, Divider, Button, Image, Row, Col, Skeleton } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import { useMobile } from '../contexts/Mobile';
 
 const { Text, Title } = Typography;
 
+import { API_Route } from '../main';
+
 const Footer = () => {
 	const isMobile = useMobile();
+
+	const [loading, setLoading] = React.useState(true);
+	const [downloads, setDownloads] = React.useState({ mobile: null, desktop: null });
+	
+	React.useEffect(() => {
+		const fetchDownloads = async () => {
+			try {
+				const response = await fetch(`${API_Route}/downloads`);
+				if (!response.ok) throw new Error('Failed to fetch downloads');
+				const data = await response.json();
+				setDownloads(data);
+			} catch (e) {
+				console.error('Error fetching downloads', e);
+			} finally {
+				setLoading(false);
+			};
+		};
+		fetchDownloads();
+	}, []);
 
 	return (
 		<footer style={{
@@ -52,7 +73,7 @@ const Footer = () => {
 					<Col xs={24} sm={12} md={6}>
 						<Flex vertical align='flex-start' gap={16}>
 							<Title level={5} style={{ color: 'var(--ant-color-white)' }}>Get the App</Title>
-							<div>
+							{/* <div>
 								<Button
 									ghost
 									href='https://github.com/iOSAS-CdM/mobile/releases/latest/download/app-release.apk'
@@ -73,7 +94,39 @@ const Footer = () => {
 								>
 									For Administrative Staff
 								</Button>
-							</div>
+							</div> */}
+							{loading ? (
+								<Skeleton.Input style={{ width: 200, height: 32 }} active />
+							) : (
+								<>
+									{downloads.mobile && (
+										<div>
+											<Button
+												ghost
+												href={downloads.mobile}
+												target='_blank'
+												rel='noopener noreferrer'
+												icon={<GithubOutlined />}
+											>
+												Students
+											</Button>
+										</div>
+									)}
+									{downloads.desktop && (
+										<div>
+											<Button
+												ghost
+												href={downloads.desktop}
+												target='_blank'
+												rel='noopener noreferrer'
+												icon={<GithubOutlined />}
+											>
+												For Administrative Staff
+											</Button>
+										</div>
+									)}
+								</>
+							)}
 						</Flex>
 					</Col>
 				</Row>
