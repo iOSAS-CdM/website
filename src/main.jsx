@@ -62,7 +62,7 @@ const Main = () => {
 	);
 };
 
-export const API_Route = import.meta.env.DEV ? 'http://localhost:3001' : 'https://iosas.online/api';
+export const API_Route = import.meta.env.DEV ? 'http://localhost:3001' : 'https://api.iosas.online';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
