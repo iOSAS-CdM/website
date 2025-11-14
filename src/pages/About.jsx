@@ -96,39 +96,6 @@ const About = () => {
 				</div>
 			</main>
 
-			{/* Image Placeholders */}
-			<section style={sectionStyle}>
-				<Row gutter={[16, 16]} justify='center'>
-					{[...Array(4)].map((_, i) => (
-						<Col key={i} xs={12} sm={12} md={6}>
-							<Card
-								style={{
-									width: '100%',
-									paddingTop: '150%', // 2:3 Aspect Ratio
-									position: 'relative',
-									backgroundColor: '#333'
-								}}
-							>
-								<Flex
-									vertical
-									align='center'
-									justify='center'
-									style={{
-										position: 'absolute',
-										top: 0,
-										left: 0,
-										right: 0,
-										bottom: 0,
-										color: 'white'
-									}}
-								>
-								</Flex>
-							</Card>
-						</Col>
-					))}
-				</Row>
-			</section>
-
 			<section style={sectionStyle}>
 				<Title level={2}>Mandate</Title>
 				<Paragraph style={{ textAlign: 'justify' }}>
