@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Typography, Divider, Button, Image, Row, Col, Skeleton } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
+import { GithubOutlined, AndroidOutlined, WindowsOutlined } from '@ant-design/icons';
 import { useMobile } from '../contexts/Mobile';
 
 const { Text, Title } = Typography;
@@ -84,7 +84,7 @@ const Footer = () => {
 												href={downloads.mobile}
 												target='_blank'
 												rel='noopener noreferrer'
-												icon={<GithubOutlined />}
+												icon={<WindowsOutlined />}
 											>
 												Students
 											</Button>
@@ -97,12 +97,24 @@ const Footer = () => {
 												href={downloads.desktop}
 												target='_blank'
 												rel='noopener noreferrer'
-												icon={<GithubOutlined />}
+												icon={<WindowsOutlined />}
 											>
 												For Administrative Staff
 											</Button>
 										</div>
 									)}
+
+									<div>
+										<Button
+											ghost
+											href='https://github.com/iOSAS-CdM'
+											target='_blank'
+											rel='noopener noreferrer'
+											icon={<GithubOutlined />}
+										>
+											GitHub Repository
+										</Button>
+									</div>
 								</>
 							)}
 						</Flex>
