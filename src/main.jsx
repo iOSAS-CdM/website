@@ -13,6 +13,7 @@ import Announcement from './pages/Announcement.jsx';
 import Contact from './pages/Contact.jsx';
 import Organizations from './pages/Organizations.jsx';
 import Organization from './pages/Organization.jsx';
+import AuthComplete from './pages/AuthComplete.jsx';
 
 import { ConfigProvider as DesignConfig, App, theme as DesignTheme } from 'antd';
 
@@ -53,6 +54,7 @@ const Main = () => {
 						<Route path='/contact' element={<Contact />} />
 						<Route path='/organizations' element={<Organizations />} />
 						<Route path='/organizations/:id' element={<Organization />} />
+						<Route path='/auth-complete' element={<AuthComplete />} />
 
 						<Route path='*' element={<Navigate to='/' replace />} />
 					</Routes>
