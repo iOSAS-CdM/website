@@ -84,7 +84,7 @@ const Footer = () => {
 												href={downloads.mobile}
 												target='_blank'
 												rel='noopener noreferrer'
-												icon={<WindowsOutlined />}
+												icon={<AndroidOutlined />}
 											>
 												Students
 											</Button>
