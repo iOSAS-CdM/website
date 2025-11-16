@@ -180,9 +180,11 @@ const Home = () => {
 								passionate team, we empower you to explore, learn, and truly flourish.
 							</Paragraph>
 
-							<Button type='primary' href='/about' icon={<RightOutlined />}>
-								Learn more about us
-							</Button>
+							<div style={{ width: '100%', textAlign: 'left' }}>
+								<Button type='primary' href='/about' icon={<RightOutlined />}>
+									Learn more about us
+								</Button>
+							</div>
 						</Col>
 					</Row>
 				</Flex>
