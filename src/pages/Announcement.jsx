@@ -49,7 +49,52 @@ const Announcement = () => {
 				if (!foundAnnouncement)
 					throw new Error('Announcement not found');
 				setAnnouncement(foundAnnouncement);
-				document.title = `${foundAnnouncement.title} - iOSAS`;
+
+				// Update page title
+				document.title = `${foundAnnouncement.title} | OSAS - Colegio de Montalban`;
+
+				// Update meta description
+				const metaDescription = document.querySelector('meta[name="description"]');
+				const excerpt = foundAnnouncement.content.substring(0, 155).replace(/[#*`]/g, '');
+				if (metaDescription)
+					metaDescription.setAttribute('content', excerpt);
+
+				// Update Open Graph tags
+				const ogTitle = document.querySelector('meta[property="og:title"]');
+				if (ogTitle) ogTitle.setAttribute('content', `${foundAnnouncement.title} | OSAS`);
+
+				const ogDescription = document.querySelector('meta[property="og:description"]');
+				if (ogDescription) ogDescription.setAttribute('content', excerpt);
+
+				const ogImage = document.querySelector('meta[property="og:image"]');
+				if (ogImage && foundAnnouncement.cover)
+					ogImage.setAttribute('content', foundAnnouncement.cover);
+
+				const ogUrl = document.querySelector('meta[property="og:url"]');
+				if (ogUrl) ogUrl.setAttribute('content', `https://iosas.online/announcements/${id}`);
+
+				// Update Twitter Card tags
+				const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+				if (twitterTitle) twitterTitle.setAttribute('content', `${foundAnnouncement.title} | OSAS`);
+
+				const twitterDescription = document.querySelector('meta[property="twitter:description"]');
+				if (twitterDescription) twitterDescription.setAttribute('content', excerpt);
+
+				const twitterImage = document.querySelector('meta[property="twitter:image"]');
+				if (twitterImage && foundAnnouncement.cover)
+					twitterImage.setAttribute('content', foundAnnouncement.cover);
+
+				// Update canonical URL
+				let canonical = document.querySelector('link[rel="canonical"]');
+				if (canonical) {
+					canonical.setAttribute('href', `https://iosas.online/announcements/${id}`);
+				} else {
+					canonical = document.createElement('link');
+					canonical.setAttribute('rel', 'canonical');
+					canonical.setAttribute('href', `https://iosas.online/announcements/${id}`);
+					document.head.appendChild(canonical);
+				};
+
 			} catch (err) {
 				setError(err.message);
 			} finally {
@@ -58,6 +103,41 @@ const Announcement = () => {
 		};
 
 		fetchAnnouncement();
+
+		// Cleanup function to reset metadata when leaving the page
+		return () => {
+			document.title = 'Office of Student Affairs and Services | Colegio de Montalban';
+
+			const metaDescription = document.querySelector('meta[name="description"]');
+			if (metaDescription)
+				metaDescription.setAttribute('content', 'Your campus compass. OSAS at Colegio de Montalban provides comprehensive student welfare, development programs, guidance counseling, student organizations, downloadable forms, and campus announcements. Fostering holistic development and student success.');
+
+			const ogTitle = document.querySelector('meta[property="og:title"]');
+			if (ogTitle) ogTitle.setAttribute('content', 'Office of Student Affairs and Services | Colegio de Montalban');
+
+			const ogDescription = document.querySelector('meta[property="og:description"]');
+			if (ogDescription)
+				ogDescription.setAttribute('content', 'Your campus compass. OSAS at Colegio de Montalban provides comprehensive student welfare, development programs, guidance counseling, student organizations, downloadable forms, and campus announcements. Fostering holistic development and student success.');
+
+			const ogImage = document.querySelector('meta[property="og:image"]');
+			if (ogImage) ogImage.setAttribute('content', '/CdM-OSAS Banner.png');
+
+			const ogUrl = document.querySelector('meta[property="og:url"]');
+			if (ogUrl) ogUrl.setAttribute('content', 'https://iosas.online/');
+
+			const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+			if (twitterTitle) twitterTitle.setAttribute('content', 'Office of Student Affairs and Services | Colegio de Montalban');
+
+			const twitterDescription = document.querySelector('meta[property="twitter:description"]');
+			if (twitterDescription)
+				twitterDescription.setAttribute('content', 'Your campus compass. OSAS at Colegio de Montalban provides comprehensive student welfare, development programs, guidance counseling, student organizations, downloadable forms, and campus announcements. Fostering holistic development and student success.');
+
+			const twitterImage = document.querySelector('meta[property="twitter:image"]');
+			if (twitterImage) twitterImage.setAttribute('content', '/CdM-OSAS Banner.png');
+
+			const canonical = document.querySelector('link[rel="canonical"]');
+			if (canonical) canonical.setAttribute('href', 'https://iosas.online/');
+		};
 	}, [id]);
 
 	const sectionStyle = {
