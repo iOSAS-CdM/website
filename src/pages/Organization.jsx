@@ -112,7 +112,7 @@ const Organization = () => {
 											<Col key={member.student.id} xs={24} sm={16} md={12} lg={8}>
 												<Card>
 													<Card.Meta
-														avatar={<Avatar src={member.student.profilePicture} size={64} />}
+														avatar={<Avatar src={member.student.profilePicture + `?random=${Math.random()}`} size={64} />}
 														title={`${member.student.name.first} ${member.student.name.last}`}
 														description={member.role}
 													/>
