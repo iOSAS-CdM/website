@@ -1,0 +1,13 @@
+# robots.txt for Colegio de Montalban OSAS Website
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://osas.cdm.edu.ph/sitemap.xml
+
+# Disallow auth and dynamic routes
+Disallow: /auth-complete
+
+# Crawl-delay (optional, adjust as needed)
+Crawl-delay: 1
