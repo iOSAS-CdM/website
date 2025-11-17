@@ -196,7 +196,7 @@ const Announcement = () => {
 						<Divider />
 						<Flex justify='space-between' align='center'>
 							<Flex align='center' gap={16}>
-								<Avatar src={announcement.author.profilePicture + `?random=${Math.random()}`} alt={announcement.author.name.first} size={32} />
+								<Avatar size={64} shape='square' src={announcement.author.profilePicture + `?random=${Math.random()}`} alt={announcement.author.name.first} />
 								<Text strong>{`${announcement.author.name.first} ${announcement.author.name.last}`}</Text>
 							</Flex>
 							<Text type='secondary'>{dayjs(announcement.date).format('MMMM D, YYYY')}</Text>

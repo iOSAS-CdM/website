@@ -155,7 +155,7 @@ const About = () => {
 						{/* Leadership */}
 						{leadership.map((member, index) => (
 							<Flex key={index} vertical align='center' gap={8}>
-								<Avatar size={64} icon={<UserOutlined />} />
+								<Avatar size={64} shape='square' icon={<UserOutlined />} />
 								<Text strong>{member.name}</Text>
 								<Text type='secondary'>{member.position}</Text>
 							</Flex>
@@ -165,7 +165,7 @@ const About = () => {
 
 						{/* Head of SAS */}
 						<Flex vertical align='center' gap={8}>
-							<Avatar size={64} icon={<UserOutlined />} />
+							<Avatar size={64} shape='square' icon={<UserOutlined />} />
 							<Text strong>{headOfSAS.name}</Text>
 							<Text type='secondary'>{headOfSAS.position}</Text>
 						</Flex>
@@ -178,7 +178,7 @@ const About = () => {
 								<Flex vertical align='center' gap={32}>
 									{coordinators.map((member, index) => (
 										<Flex key={index} vertical align='center' gap={8}>
-											<Avatar size={64} icon={<UserOutlined />} />
+											<Avatar size={64} shape='square' icon={<UserOutlined />} />
 											<Text strong>{member.name}</Text>
 											<Text type='secondary'>{member.position}</Text>
 										</Flex>
@@ -204,7 +204,7 @@ const About = () => {
 								<Flex vertical align='center' gap={32}>
 									{guidanceCounselors.map((member, index) => (
 										<Flex key={index} vertical align='center' gap={8}>
-											<Avatar size={64} icon={<UserOutlined />} />
+											<Avatar size={64} shape='square' icon={<UserOutlined />} />
 											<Text strong>{member.name}</Text>
 											{member.position && <Text type='secondary'>{member.position}</Text>}
 										</Flex>

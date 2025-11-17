@@ -186,7 +186,7 @@ const Organization = () => {
 								/>
 								<Flex vertical align='stretch' gap={32} style={{ width: '100%' }}>
 									<Flex justify='start' align='center' gap={16}>
-										<Avatar src={organization.logo} size={isMobile ? 64 : 96} />
+										<Avatar shape='square' src={organization.logo} size={isMobile ? 64 : 128} />
 										<Flex vertical justify='center'>
 											<Title level={isMobile ? 4 : 2} style={{ margin: 0 }}>{organization.fullName}</Title>
 											<Title level={isMobile ? 5 : 4} type='secondary' style={{ margin: 0 }}>{organization.shortName}</Title>
@@ -199,7 +199,7 @@ const Organization = () => {
 											<Col key={member.student.id} xs={24} sm={16} md={12} lg={8}>
 												<Card>
 													<Card.Meta
-														avatar={<Avatar src={member.student.profilePicture + `?random=${Math.random()}`} size={64} />}
+														avatar={<Avatar shape='square' src={member.student.profilePicture + `?random=${Math.random()}`} size={64} />}
 														title={`${member.student.name.first} ${member.student.name.last}`}
 														description={member.role}
 													/>

@@ -122,21 +122,21 @@ const Contact = () => {
 												alt={dev.name}
 												src={dev.avatar}
 												style={{
-													height: 200,
+													height: 256,
 													objectFit: 'cover'
 												}}
 											/>
 										) : (
 											<div
 												style={{
-													height: 200,
+													height: 256,
 													display: 'flex',
 													justifyContent: 'center',
 													alignItems: 'center',
 													backgroundColor: '#f0f0f0'
 												}}
 											>
-												<Avatar size={100} icon={<UserOutlined />} />
+												<Avatar size={128} shape='square' icon={<UserOutlined />} />
 											</div>
 										)
 									}
