@@ -10,7 +10,7 @@ import About from './pages/About.jsx';
 import Forms from './pages/Forms.jsx';
 import Calendar from './pages/Calendar.jsx';
 import Announcement from './pages/Announcement.jsx';
-import Contact from './pages/Contact.jsx';
+import Developers from './pages/Developers.jsx';
 import Organizations from './pages/Organizations.jsx';
 import Organization from './pages/Organization.jsx';
 import AuthComplete from './pages/AuthComplete.jsx';
@@ -51,7 +51,7 @@ const Main = () => {
 						<Route path='/forms' element={<Forms />} />
 						<Route path='/calendar' element={<Calendar />} />
 						<Route path='/announcements/:id' element={<Announcement />} />
-						<Route path='/contact' element={<Contact />} />
+						<Route path='/developers' element={<Developers />} />
 						<Route path='/organizations' element={<Organizations />} />
 						<Route path='/organizations/:id' element={<Organization />} />
 						<Route path='/auth-complete' element={<AuthComplete />} />

@@ -7,7 +7,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useMobile } from '../contexts/Mobile';
 
 /**
- * @type {React.FC<{ activeKey: 'home' | 'about' | 'forms' | 'calendar' | 'organizations' | 'contact' }>}>}
+ * @type {React.FC<{ activeKey: 'home' | 'about' | 'forms' | 'calendar' | 'organizations' | 'developers' }>}>}
  */
 const Header = (props) => {
 	const { activeKey, ref } = props;
@@ -134,8 +134,8 @@ const Header = (props) => {
 								key: 'organizations'
 							},
 							{
-								label: 'Contact',
-								key: 'contact'
+								label: 'Developers',
+								key: 'developers'
 							}
 						]}
 						onChange={(key) => {
