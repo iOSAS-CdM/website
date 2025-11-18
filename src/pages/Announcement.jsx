@@ -202,8 +202,11 @@ const Announcement = () => {
 							<Text type='secondary'>{dayjs(announcement.date).format('MMMM D, YYYY')}</Text>
 						</Flex>
 
-						<Flex align='center' gap={16}>
-							<Text type='secondary' onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}> <ArrowLeftOutlined /> Go back</Text>
+						<Flex justify='space-between'>
+							<Flex align='center' gap={16}>
+								<Text type='secondary' onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}> <ArrowLeftOutlined /> Go back</Text>
+							</Flex>
+							<div className="fb-share-button" data-href={`https://iosas.online/announcements/${announcement.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://iosas.online/announcements/${announcement.id}&amp;src=sdkpreparse`} className='fb-xfbml-parse-ignore'>Share</a></div>
 						</Flex>
 					</Flex>
 				</section>
