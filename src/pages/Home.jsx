@@ -126,7 +126,6 @@ const Home = () => {
 					<Divider style={{ maxWidth: '100%', width: 256, height: 1, margin: '16px 0', backgroundColor: 'var(--ant-color-white)' }} />
 					<Flex gap={16} wrap='wrap' justify='center'>
 						<Button type='primary' icon={<BookOutlined />} href='/about'>About Us</Button>
-						<Button type='default' icon={<PhoneOutlined />} href='/contact'>Contact Us</Button>
 					</Flex>
 				</Flex>
 
