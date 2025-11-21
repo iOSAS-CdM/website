@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Typography, Row, Col, Card, Avatar } from 'antd';
+import { Flex, Typography, Row, Col, Card, Avatar, Image } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import Header from '../components/Header';
@@ -33,35 +33,6 @@ const About = () => {
 		margin: '0 auto',
 		textAlign: 'center'
 	};
-
-	const leadership = [
-		{ name: 'PROF. JOY U. MERCADO, LPT, PHD', position: 'College President' },
-		{ name: 'BGEN. JOSE B. CAPARAS, JR. (RET.)', position: 'Vice President for Administration & Finance' },
-		{ name: 'ASSOC. PROF. JONATHAN DILLERA, LPT MAED', position: 'Director for Student Affairs and Services' },
-	];
-
-	const headOfSAS = { name: 'ALYSSA MARIE S. BAYLON, LPT', position: 'Head of Student Affairs and Services' };
-
-	const coordinators = [
-		{ name: 'BENITA C. PEREZ, LPT', position: 'Head of Student Publication Office' },
-		{ name: 'AMELIE R. ROGADOR, LPT', position: 'Prefect of Discipline (Main Campus)' },
-	];
-
-	const guidanceCounselors = [
-		{ name: 'NELIA R. OBA, RGC, LPT, MAED', position: 'Guidance Counselor' },
-		{ name: 'MARICEL L. ARAYA, RGC, LPT', position: 'Guidance Counselor' },
-		{ name: 'CAROLYN R. SANTIAGO, RGC', position: 'Guidance Counselor' },
-		{ name: 'MARDY GAIL ARZABAL, RPM', position: 'Guidance Counselor' },
-		{ name: 'DARLENE G. CRUZ', position: 'Guidance Counselor' }
-	];
-
-	const coordinatorRoles = [
-		'Student Publication Coordinator',
-		'Culture and Arts Coordinator',
-		'Scholarship Coordinator',
-		'Student Organization Coordinator',
-		'Sports Development Coordinator',
-	];
 
 	return (
 		<>
@@ -150,71 +121,10 @@ const About = () => {
 			{/* Our Team Section */}
 			<section style={sectionStyle}>
 				<Flex vertical gap={64}>
-					<Title level={2}>Student Affairs and Services Organizational Chart</Title>
-					<Flex vertical align='center' gap={32}>
-						{/* Leadership */}
-						{leadership.map((member, index) => (
-							<Flex key={index} vertical align='center' gap={8}>
-								<Avatar size={64} shape='square' icon={<UserOutlined />} />
-								<Text strong>{member.name}</Text>
-								<Text type='secondary'>{member.position}</Text>
-							</Flex>
-						))}
-
-						<div style={{ width: 2, height: 64, backgroundColor: '#ccc' }} />
-
-						{/* Head of SAS */}
-						<Flex vertical align='center' gap={8}>
-							<Avatar size={64} shape='square' icon={<UserOutlined />} />
-							<Text strong>{headOfSAS.name}</Text>
-							<Text type='secondary'>{headOfSAS.position}</Text>
-						</Flex>
-
-						{!isMobile && <div style={{ width: '60%', height: 2, backgroundColor: '#ccc', margin: '0 auto' }} />}
-
-						<Row justify='space-around' style={{ width: '100%' }} gutter={[16, 64]}>
-							{/* Left Side */}
-							<Col xs={24} lg={8}>
-								<Flex vertical align='center' gap={32}>
-									{coordinators.map((member, index) => (
-										<Flex key={index} vertical align='center' gap={8}>
-											<Avatar size={64} shape='square' icon={<UserOutlined />} />
-											<Text strong>{member.name}</Text>
-											<Text type='secondary'>{member.position}</Text>
-										</Flex>
-									))}
-								</Flex>
-							</Col>
-
-							{/* Center Roles */}
-							{!isMobile && (
-								<Col lg={8}>
-									<Flex vertical justify='space-around' align='center' style={{ height: '100%' }}>
-										{coordinatorRoles.map((role, index) => (
-											<Card key={index} size='small' style={{ margin: '10px 0' }}>
-												<Text>{role}</Text>
-											</Card>
-										))}
-									</Flex>
-								</Col>
-							)}
-
-							{/* Right Side */}
-							<Col xs={24} lg={8}>
-								<Flex vertical align='center' gap={32}>
-									{guidanceCounselors.map((member, index) => (
-										<Flex key={index} vertical align='center' gap={8}>
-											<Avatar size={64} shape='square' icon={<UserOutlined />} />
-											<Text strong>{member.name}</Text>
-											{member.position && <Text type='secondary'>{member.position}</Text>}
-										</Flex>
-									))}
-								</Flex>
-							</Col>
-						</Row>
-					</Flex>
+					<Image src='/Organization Chart.png' alt='Organization Chart' />
 				</Flex>
 			</section>
+
 			<Footer />
 		</>
 	);
