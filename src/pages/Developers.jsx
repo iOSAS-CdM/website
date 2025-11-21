@@ -15,7 +15,8 @@ const { Title, Text, Paragraph } = Typography;
 const developers = [
 	{
 		name: 'Edna Sophia Fernandez',
-		role: 'Project Manager & Lead Researcher'
+		role: 'Project Manager & Lead Researcher',
+		avatar: '/developers/phia.jpg'
 	},
 	{
 		name: 'Daniel John Baynosa',
@@ -27,11 +28,13 @@ const developers = [
 	},
 	{
 		name: 'Alexander Zyrol',
-		role: 'Manuscript Writer'
+		role: 'Manuscript Writer',
+		avatar: '/developers/zy.jpg'
 	},
 	{
 		name: 'Noverjohn Rivas',
-		role: 'Manuscript Writer'
+		role: 'Manuscript Writer',
+		avatar: '/developers/rivas.jpg'
 	}
 ];
 
