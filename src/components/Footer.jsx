@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Typography, Divider, Button, Image, Row, Col, Skeleton } from 'antd';
-import { GithubOutlined, AndroidOutlined, WindowsOutlined } from '@ant-design/icons';
+import { GithubOutlined, AndroidOutlined, WindowsOutlined, BugOutlined } from '@ant-design/icons';
 import { useMobile } from '../contexts/Mobile';
 
 const { Text, Title } = Typography;
@@ -99,7 +99,7 @@ const Footer = () => {
 												rel='noopener noreferrer'
 												icon={<WindowsOutlined />}
 											>
-												For Administrative Staff
+												Administrative Staff
 											</Button>
 										</div>
 									)}
@@ -113,6 +113,16 @@ const Footer = () => {
 											icon={<GithubOutlined />}
 										>
 											GitHub Repository
+										</Button>
+									</div>
+
+									<div>
+										<Button
+											ghost
+											href='/bug'
+											icon={<BugOutlined />}
+										>
+											Report an Issue
 										</Button>
 									</div>
 								</>

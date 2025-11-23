@@ -14,6 +14,7 @@ import Developers from './pages/Developers.jsx';
 import Organizations from './pages/Organizations.jsx';
 import Organization from './pages/Organization.jsx';
 import AuthComplete from './pages/AuthComplete.jsx';
+import Bug from './pages/Bug.jsx';
 
 import { ConfigProvider as DesignConfig, App, theme as DesignTheme } from 'antd';
 
@@ -55,6 +56,7 @@ const Main = () => {
 						<Route path='/organizations' element={<Organizations />} />
 						<Route path='/organizations/:id' element={<Organization />} />
 						<Route path='/auth-complete' element={<AuthComplete />} />
+						<Route path='/bug' element={<Bug />} />
 
 						<Route path='*' element={<Navigate to='/' replace />} />
 					</Routes>
