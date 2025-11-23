@@ -1,0 +1,3 @@
+[submodule "src/policies"]
+	path = src/policies
+	url = https://github.com/iOSAS-CdM/policies
