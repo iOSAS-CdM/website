@@ -123,10 +123,6 @@ const Home = () => {
 					<Text style={{ color: 'currentColor', fontSize: isMobile ? 14 : 16, maxWidth: 800, textAlign: 'center' }}>
 						<b>Your campus compass</b>. Guiding student welfare, development, and disciplinary matters.
 					</Text>
-					<Divider style={{ maxWidth: '100%', width: 256, height: 1, margin: '16px 0', backgroundColor: 'var(--ant-color-white)' }} />
-					<Flex gap={16} wrap='wrap' justify='center'>
-						<Button type='primary' icon={<BookOutlined />} href='/about'>About Us</Button>
-					</Flex>
 				</Flex>
 
 				<div
