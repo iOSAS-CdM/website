@@ -65,7 +65,8 @@ const Contact = () => {
 
 	return (
 		<>
-			<Header ref={header} activeKey='contact' />
+			<Header ref={header} activeKey='developers' />
+
 			<main
 				style={{
 					paddingTop: headerSize
