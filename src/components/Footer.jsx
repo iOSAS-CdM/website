@@ -66,6 +66,7 @@ const Footer = () => {
 							<Typography.Link href='/forms' style={{ color: 'var(--ant-color-white)' }}>Forms</Typography.Link>
 							<Typography.Link href='/calendar' style={{ color: 'var(--ant-color-white)' }}>Calendar</Typography.Link>
 							<Typography.Link href='/organizations' style={{ color: 'var(--ant-color-white)' }}>Organizations</Typography.Link>
+							<Typography.Link href='/faqs' style={{ color: 'var(--ant-color-white)' }}>FAQs</Typography.Link>
 							<Typography.Link href='/contact' style={{ color: 'var(--ant-color-white)' }}>Contact</Typography.Link>
 							<Typography.Link href='/privacy-policy' style={{ color: 'var(--ant-color-white)' }}>Privacy Policy</Typography.Link>
 							<Typography.Link href='/terms-of-service' style={{ color: 'var(--ant-color-white)' }}>Terms of Service</Typography.Link>

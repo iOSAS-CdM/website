@@ -17,6 +17,7 @@ import AuthComplete from './pages/AuthComplete.jsx';
 import Bug from './pages/Bug.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
 import TermsOfService from './pages/TermsOfService.jsx';
+import FAQs from './pages/FAQs.jsx';
 
 import { ConfigProvider as DesignConfig, App, theme as DesignTheme } from 'antd';
 
@@ -61,6 +62,7 @@ const Main = () => {
 						<Route path='/bug' element={<Bug />} />
 						<Route path='/privacy-policy' element={<PrivacyPolicy />} />
 						<Route path='/terms-of-service' element={<TermsOfService />} />
+						<Route path='/faqs' element={<FAQs />} />
 
 						<Route path='*' element={<Navigate to='/' replace />} />
 					</Routes>
