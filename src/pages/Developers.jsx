@@ -182,6 +182,32 @@ const Contact = () => {
 					</Row>
 				</Flex>
 			</section>
+
+			<section style={sectionStyle}>
+				<Flex vertical align='center' gap={16}>
+					<Title level={2} style={{ textAlign: 'center', marginBottom: '32px' }}>
+						Special Thanks to Our Sponsors
+					</Title>
+					<Row gutter={[32, 32]} justify='center' style={{ width: '100%' }}>
+						<Col xs={24} sm={12} md={8}>
+							<Card hoverable style={{ textAlign: 'center' }}>
+								<Title level={4} style={{ marginBottom: '8px' }}>Ely Rose Bosangit</Title>
+								<Text type='secondary'>Project Sponsor</Text>
+							</Card>
+						</Col>
+						<Col xs={24} sm={12} md={8}>
+							<Card hoverable style={{ textAlign: 'center' }}>
+								<Title level={4} style={{ marginBottom: '8px' }}>James Andrew Andrada</Title>
+								<Text type='secondary'>Project Sponsor</Text>
+							</Card>
+						</Col>
+					</Row>
+					<Paragraph style={{ textAlign: 'center', marginTop: '32px', fontSize: '16px' }}>
+						We are deeply grateful for the generous support of our sponsors. Their contributions have been instrumental in making this project possible.
+					</Paragraph>
+				</Flex>
+			</section>
+
 			<Footer />
 		</>
 	);
