@@ -10,7 +10,7 @@ console.log('\n🏗️  Building and pre-rendering website...\n');
 
 // Step 1: Build the project
 console.log('📦 Step 1: Building project with Vite...\n');
-const build = spawn('npm', ['run', 'build'], { stdio: 'inherit', shell: true });
+const build = spawn('npx', ['vite', 'build'], { stdio: 'inherit', shell: true });
 
 build.on('close', (code) => {
 	if (code !== 0) {
