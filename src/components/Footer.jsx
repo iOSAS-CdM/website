@@ -58,18 +58,29 @@ const Footer = () => {
 						</Flex>
 					</Col>
 
-					<Col xs={24} sm={12} md={4}>
-						<Title level={5} style={{ color: 'var(--ant-color-white)' }}>Sitemap</Title>
-						<Flex vertical align='flex-start' gap={8}>
-							<Typography.Link href='/' style={{ color: 'var(--ant-color-white)' }}>Home</Typography.Link>
-							<Typography.Link href='/about' style={{ color: 'var(--ant-color-white)' }}>About</Typography.Link>
-							<Typography.Link href='/forms' style={{ color: 'var(--ant-color-white)' }}>Forms</Typography.Link>
-							<Typography.Link href='/calendar' style={{ color: 'var(--ant-color-white)' }}>Calendar</Typography.Link>
-							<Typography.Link href='/organizations' style={{ color: 'var(--ant-color-white)' }}>Organizations</Typography.Link>
-							<Typography.Link href='/faqs' style={{ color: 'var(--ant-color-white)' }}>FAQs</Typography.Link>
-							<Typography.Link href='/contact' style={{ color: 'var(--ant-color-white)' }}>Contact</Typography.Link>
-							<Typography.Link href='/privacy-policy' style={{ color: 'var(--ant-color-white)' }}>Privacy Policy</Typography.Link>
-							<Typography.Link href='/terms-of-service' style={{ color: 'var(--ant-color-white)' }}>Terms of Service</Typography.Link>
+					<Col xs={24} sm={12} md={8}>
+						<Flex vertical align='flex-start' gap={16}>
+							<Title level={5} style={{ color: 'var(--ant-color-white)' }}>Sitemap</Title>
+							<Row gutter={[16, 8]}>
+								<Col xs={12} sm={12}>
+									<Flex vertical align='flex-start' gap={8}>
+										<Typography.Link href='/' style={{ color: 'var(--ant-color-white)' }}>Home</Typography.Link>
+										<Typography.Link href='/about' style={{ color: 'var(--ant-color-white)' }}>About</Typography.Link>
+										<Typography.Link href='/forms' style={{ color: 'var(--ant-color-white)' }}>Forms</Typography.Link>
+										<Typography.Link href='/calendar' style={{ color: 'var(--ant-color-white)' }}>Calendar</Typography.Link>
+										<Typography.Link href='/organizations' style={{ color: 'var(--ant-color-white)' }}>Organizations</Typography.Link>
+										<Typography.Link href='/developers' style={{ color: 'var(--ant-color-white)' }}>Developers</Typography.Link>
+									</Flex>
+								</Col>
+								<Col xs={12} sm={12}>
+									<Flex vertical align='flex-start' gap={8}>
+										<Typography.Link href='/faqs' style={{ color: 'var(--ant-color-white)' }}>FAQs</Typography.Link>
+										<Typography.Link href='/contact' style={{ color: 'var(--ant-color-white)' }}>Contact</Typography.Link>
+										<Typography.Link href='/privacy-policy' style={{ color: 'var(--ant-color-white)' }}>Privacy Policy</Typography.Link>
+										<Typography.Link href='/terms-of-service' style={{ color: 'var(--ant-color-white)' }}>Terms of Service</Typography.Link>
+									</Flex>
+								</Col>
+							</Row>
 						</Flex>
 					</Col>
 
